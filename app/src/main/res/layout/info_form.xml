@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.hk.lostandfound.UserInfo">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:id="@+id/Name_textView_Id"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/Name_edittext_id"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:enabled="true"
+            android:editable="true"
+            android:layout_toEndOf="@id/Name_textView_Id"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address"
+            android:id="@+id/Address_textView_id"
+            android:layout_below="@+id/Name_edittext_id"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/Address_edittext_id"
+            android:editable="true"
+            android:enabled="true"
+            android:layout_below="@+id/Name_edittext_id"
+            android:layout_toEndOf="@+id/Address_textView_id"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/city"
+            android:id="@+id/City_textView_id"
+            android:layout_below="@+id/Address_textView_id"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:id="@+id/City_edittext_id"
+            android:editable="true"
+            android:enabled="true"
+            android:layout_below="@+id/Address_edittext_id"
+            android:layout_toEndOf="@+id/City_textView_id"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zip"
+            android:id="@+id/Zip_textView_id"
+            android:layout_below="@+id/City_textView_id"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/Zip_edittext_id"
+            android:editable="true"
+            android:enabled="true"
+            android:inputType="number"
+            android:layout_below="@+id/City_edittext_id"
+            android:layout_toEndOf="@+id/Zip_textView_id"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:id="@+id/Email_textView_id"
+            android:layout_below="@+id/Zip_edittext_id"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/Email_editText_id"
+            android:layout_toEndOf="@id/Email_textView_id"
+            android:layout_below="@id/Zip_edittext_id"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pet_was_lost_or_found"
+            android:id="@+id/lostFoundTextView"
+            android:layout_below="@id/Email_textView_id"
+            android:layout_marginTop="10dp"
+            android:textSize="25sp"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Lost_found_spinner_id"
+            android:spinnerMode="dropdown"
+            android:layout_below="@+id/lostFoundTextView"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/pet_name"
+            android:id="@+id/PetName_textView_id"
+            android:textSize="25sp"
+            android:layout_below="@id/Lost_found_spinner_id"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/PetName_edittext_id"
+            android:ems="10"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:layout_centerVertical="true"
+            android:inputType="text"
+            android:layout_toEndOf="@id/PetName_textView_id"
+            android:layout_below="@id/Lost_found_spinner_id"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/breed"
+            android:id="@+id/Breed_textView_id"
+            android:textSize="25sp"
+            android:layout_below="@id/PetName_textView_id"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/breed_edittext_id"
+            android:ems="10"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:layout_centerVertical="true"
+            android:inputType="text"
+            android:layout_toEndOf="@id/Breed_textView_id"
+            android:layout_below="@id/PetName_textView_id"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pet_type"
+            android:id="@+id/Pet_type_TextView_ID"
+            android:layout_below="@id/Breed_textView_id"
+            android:layout_marginTop="10dp"
+            android:textSize="25sp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Pet_Type_editText_id"
+            android:ems="10"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:layout_toEndOf="@id/Pet_type_TextView_ID"
+            android:layout_below="@id/breed_edittext_id"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/pet_gender"
+            android:id="@+id/Pet_gender_TextView_id"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/Pet_type_TextView_ID"
+            android:textSize="25sp"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/radioGroup"
+            android:layout_toEndOf="@+id/Pet_gender_TextView_id"
+            android:layout_below="@id/Pet_type_TextView_ID"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/f"
+                android:id="@+id/female_checkBox_id"
+                android:checked="false"
+                android:layout_marginRight="20dp"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m"
+                android:id="@+id/male_checkBox_id"
+                android:checked="true"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/description_of_pet"
+            android:id="@+id/description_textView_id"
+            android:layout_below="@id/radioGroup"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/description_0f_pet_edittext_id"
+            android:layout_below="@+id/description_textView_id"/>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/description_0f_pet_edittext_id"
+            android:layout_marginTop="10dp"
+            android:id="@+id/buttonLayout">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_photo"
+                android:id="@+id/add_Photo_button_id"
+                android:clickable="true"
+                android:enabled="true"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/post_information"
+                android:id="@+id/post_info_button_id"
+                android:enabled="true" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:id="@+id/Cancel_buttton_id"
+                android:enabled="true" />
+        </GridLayout>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ivImage"
+                android:layout_below="@id/buttonLayout"/>
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lv_pet_name_label"
+        android:id="@+id/petNameLabel"
+        android:textSize="15sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lv_post_date_label"
+        android:id="@+id/postDateLabel"
+        android:layout_gravity="right"
+        android:textSize="15sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lv_owner_label"
+        android:id="@+id/ownerNameLable"
+        android:textSize="15sp"
+        android:layout_below="@+id/petNameLabel"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/thumbnailListView"
+        android:contentDescription="@string/thumbnail_list_view"
+        android:layout_gravity="right"
+        android:layout_alignTop="@+id/ownerNameLable"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lv_contact_label"
+        android:id="@+id/contactLabel"
+        android:textSize="15sp"
+        android:layout_below="@+id/ownerNameLable"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lv_type_label"
+        android:id="@+id/typeLabel"
+        android:layout_below="@+id/contactLabel"
+        android:layout_alignParentStart="true"
+        android:textSize="15sp" />
+
+</RelativeLayout>

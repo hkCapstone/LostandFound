@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.hk.lostandfound.MainFeed">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/menu"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/item1"
+        android:title="@string/add_post"/>
+    <item android:id="@+id/item2"
+        android:title="@string/about"/>
+
+
+</menu>
