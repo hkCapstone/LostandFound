@@ -61,6 +61,7 @@
 
         <activity android:name=".Google_Map"/>
         <activity android:name=".UserInfo"/>
+
     </application>
 
 </manifest>

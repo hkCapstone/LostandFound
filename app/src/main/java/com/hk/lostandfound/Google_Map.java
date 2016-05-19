@@ -152,11 +152,13 @@ public class Google_Map extends AppCompatActivity {
     //Class to get JSON data and set the lat and lng to build a marker
     private class GetJSONLongLat extends AsyncTask<String, Void, String[]> {
 
-       ProgressDialog dialog = new ProgressDialog(Google_Map.this);
+        ProgressDialog dialog = new ProgressDialog(Google_Map.this);
         String feedType;
         String petType;
         String postDate;
         String petName;
+
+       //Default constructor
        public GetJSONLongLat(String feedType, String petType, String postDate, String petName){
            this.feedType = feedType;
            this.petType = petType;

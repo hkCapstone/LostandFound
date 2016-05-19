@@ -98,9 +98,30 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Phone:"
+            android:id="@+id/Phone_textView_id"
+            android:layout_below="@+id/Zip_textView_id"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/Phone_edittext_id"
+            android:editable="true"
+            android:enabled="true"
+            android:inputType="phone"
+            android:layout_below="@+id/Zip_textView_id"
+            android:layout_toEndOf="@+id/Phone_textView_id"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/email"
             android:id="@+id/Email_textView_id"
-            android:layout_below="@+id/Zip_edittext_id"
+            android:layout_below="@+id/Phone_textView_id"
             android:textSize="25sp"
             android:layout_marginTop="10dp"/>
 
@@ -111,7 +132,7 @@
             android:ems="10"
             android:id="@+id/Email_editText_id"
             android:layout_toEndOf="@id/Email_textView_id"
-            android:layout_below="@id/Zip_edittext_id"
+            android:layout_below="@id/Phone_edittext_id"
             />
 
         <TextView

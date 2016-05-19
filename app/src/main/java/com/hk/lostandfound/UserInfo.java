@@ -11,19 +11,17 @@ import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,7 +34,7 @@ import java.util.regex.Pattern;
 
 
 /**
- * Created by 660162328 on 5/10/2016.
+ * Created by George and David on 5/10/2016.
  */
 public class UserInfo extends AppCompatActivity implements OnItemSelectedListener {
 
@@ -52,6 +50,7 @@ public class UserInfo extends AppCompatActivity implements OnItemSelectedListene
     private EditText etPetName;
     private EditText etPetType;
     private EditText etBreed;
+    private EditText etPhoneNumber;
     private EditText etPetDescription;
     private Spinner spinner;
     private String strUserName;
@@ -61,30 +60,42 @@ public class UserInfo extends AppCompatActivity implements OnItemSelectedListene
     private String strEmail;
     private String strPetName;
     private String strPetType;
+    private String strPhoneNumber;
     private String strBreed;
     private String strPetDescription;
     private String photoName;
     private boolean postData;
+    private RadioGroup radioGroup;
+    DBUtil dbUtil = new DBUtil();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.info_form);
 
-        // lost and found spinner drop down
+        // lost and found spinner drop down and radio button group
         spinner =(Spinner) findViewById(R.id.Lost_found_spinner_id);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         spinner.setOnItemSelectedListener(this);
+
+        //Set spinner indexes
         List<String> categories = new ArrayList<String>();
         categories.add("Select");
         categories.add("Lost");
         categories.add("Found");
+
         // adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-        // dropdown layout style - list view with radio buttons
+
+        //set adapter for layout
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         //attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
         spinner.setSelection(0);
+
+
         emailEditText =(EditText)findViewById(R.id.Email_editText_id);
         final Button buttonOne = (Button) findViewById(R.id.add_Photo_button_id);
         final Button buttonTwo = (Button) findViewById(R.id.post_info_button_id );
@@ -102,11 +113,72 @@ public class UserInfo extends AppCompatActivity implements OnItemSelectedListene
         buttonTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email = emailEditText.getText().toString();
-                if(!isValidEmail(email)){
-                    emailEditText.setError("Invalid Email");
-                }
+                postData = true;
 
+                strEmail = emailEditText.getText().toString().toLowerCase();
+                if(!isValidEmail(strEmail)){
+                    emailEditText.setError("Invalid Email");
+                    postData = false;
+                }
+                strUserName = etUserName.getText().toString().toLowerCase();
+                if(TextUtils.isEmpty(strUserName)) {
+                    etUserName.setError("Please Enter Name");
+                    postData = false;
+                }
+                strAddress = etAddress.getText().toString();
+                if(TextUtils.isEmpty(strAddress)) {
+                    etAddress.setError("Please Enter Street Address");
+                    postData = false;
+                }
+                strCity = etCity.getText().toString().toLowerCase();
+                if(TextUtils.isEmpty(strCity)) {
+                    etCity.setError("Please Enter City Name");
+                    postData = false;
+                }
+                strZip = etZip.getText().toString();
+                if(TextUtils.isEmpty(strZip)) {
+                    etZip.setError("Please Enter Zip Code");
+                    postData = false;
+                }
+                strPetName = etPetName.getText().toString().toLowerCase();
+                if(TextUtils.isEmpty(strPetName)) {
+                    etPetName.setError("Please Enter Your Pets Name");
+                    postData = false;
+                }
+                strBreed = etBreed.getText().toString();
+                if (TextUtils.isEmpty(strBreed)){
+                    etBreed.setError("Please Enter Breed Of Pet");
+                    postData = false;
+                }
+                strPetDescription = etPetDescription.getText().toString();
+                if(TextUtils.isEmpty(strPetDescription)) {
+                    etPetDescription.setError("Please Enter A Description");
+                    postData = false;
+                }
+                strPhoneNumber = etPhoneNumber.getText().toString();
+                if(TextUtils.isEmpty(strPhoneNumber)) {
+                    etPhoneNumber.setError("Please Enter A Valid Phone Number");
+                    postData = false;
+                }
+                if (photoName == null){
+                    postData = false;
+                    Toast.makeText(ApplicationContextProvider.getContext(), "Please Add Or Take A Photo Of The Pet", Toast.LENGTH_LONG).show();
+                }
+                String feedType = spinner.getSelectedItem().toString();
+                if (feedType.equalsIgnoreCase("select")){
+                    Toast.makeText(ApplicationContextProvider.getContext(), "Please Select Feed Type, Lost Or Found Pet", Toast.LENGTH_LONG).show();
+                    postData = false;
+                }
+                int id  = radioGroup.getCheckedRadioButtonId();
+                View radioButton = radioGroup.findViewById(id);
+                int radioId = radioGroup.indexOfChild(radioButton);
+                RadioButton btn = (RadioButton) radioGroup.getChildAt(radioId);
+                String gender = (String) btn.getText();
+
+                if(postData){
+                    dbUtil.uploadData(feedType, strUserName, strAddress ,strCity, strZip, strPhoneNumber,
+                            strEmail, strPetName, strPetType, gender, strBreed, strPetDescription, photoName );
+                }
             }
         });
 
@@ -164,6 +236,13 @@ public class UserInfo extends AppCompatActivity implements OnItemSelectedListene
 
         if (TextUtils.isEmpty(strBreed)){
             etBreed.setError("Please Enter Breed Of Pet");
+        }
+        etPhoneNumber = (EditText) findViewById(R.id.Phone_edittext_id);
+
+        strPhoneNumber = etPhoneNumber.getText().toString();
+        if(TextUtils.isEmpty(strPhoneNumber)) {
+            etPhoneNumber.setError("Please Enter A Valid Phone Number");
+            postData = false;
         }
         etPetDescription = (EditText) findViewById(R.id.description_0f_pet_edittext_id);
         strPetDescription = etPetDescription.getText().toString();
