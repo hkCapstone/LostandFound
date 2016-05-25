@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 public class MainFeed extends AppCompatActivity implements OnItemClickListener, OnClickListener {
 
-    private String picUrl = "http://ec2-54-201-139-202.us-west-2.compute.amazonaws.com/images/";
+    private String picUrl = "http://ec2-54-191-44-221.us-west-2.compute.amazonaws.com/images/";
     private ArrayList<HashMap<String, String>> feedList = new ArrayList<HashMap<String, String>>();
     private ArrayList<String> addresses = new ArrayList();
     private Button lostButton;
@@ -222,7 +222,6 @@ public class MainFeed extends AppCompatActivity implements OnItemClickListener, 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                //adapter.notifyDataSetChanged();
                 break;
             case R.id.mapButton:
                 Intent mapIntent = new Intent(this, Google_Map.class);

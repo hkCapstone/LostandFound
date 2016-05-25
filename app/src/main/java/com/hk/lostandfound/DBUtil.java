@@ -26,7 +26,7 @@ public class DBUtil {
 
     ArrayList<HashMap<String, String>> feedList = new ArrayList<HashMap<String, String>>();
 
-    // url to get all products list
+    // url to get all feed info
     private static String url = "";
 
     // JSON Node names
@@ -50,23 +50,23 @@ public class DBUtil {
     private static final String TAG_DESCRIPTION = "description";
     private static final String TAG_PHOTO_NAME = "photoName";
 
-    // products JSONArray
+    //JSON Array
     JSONArray feeds = null;
 
     public ArrayList<HashMap<String, String>> LoadFeeds(String feedType)  {
-        url = "http://ec2-54-201-139-202.us-west-2.compute.amazonaws.com/get_all_" + feedType + ".php";
+        url = "http://ec2-54-191-44-221.us-west-2.compute.amazonaws.com/get_all_" + feedType + ".php";
 
       new LoadFeedphp().execute();
         return feedList;
     }
 
     public void uploadData(String feedType,String userName, String address, String city, String zip,
-                           String phoneNumber, String email, String petName, String petType, String gender,
-                           String breed, String description, String photo ){
-        url = "http://ec2-54-201-139-202.us-west-2.compute.amazonaws.com/create_feed.php";
+                           String phoneNumber, String email, String petName, String petType, String breed,
+                           String gender, String description, String photo ){
+        url = "http://ec2-54-191-44-221.us-west-2.compute.amazonaws.com/create_feed.php";
 
-        new CreateNewFeed().execute(feedType, userName, address, city, zip, phoneNumber, email,
-                petName, petType, gender, breed, description, photo);
+        new CreateNewFeed(feedType, userName, address, city, zip, phoneNumber, email,
+                petName, petType, breed, gender, description, photo).execute();
     }
     /**
      * Background Async Task to Load all feed info by making HTTP Request
@@ -169,6 +169,7 @@ public class DBUtil {
      * Background Async Task to Create new feed
      * */
     class CreateNewFeed extends AsyncTask<String, String, String> {
+
         String feedType;
         String userName;
         String address;
@@ -178,15 +179,15 @@ public class DBUtil {
         String email;
         String petName;
         String petType;
-        String gender;
         String breed;
+        String gender;
         String description;
         String photoName;
 
         //Default constructor
-        public void CreateNewFeed(String feedType,String userName, String address, String city, String zip,
-                                  String phoneNumber, String email, String petName, String petType, String gender,
-                                  String breed, String description, String photoName){
+        public CreateNewFeed(String feedType, String userName, String address, String city, String zip,
+                                  String phoneNumber, String email, String petName, String petType,
+                                  String breed, String gender, String description, String photoName){
 
             this.feedType = feedType;
             this.userName = userName;
@@ -197,8 +198,8 @@ public class DBUtil {
             this.email = email;
             this.petName = petName;
             this.petType = petType;
-            this.gender = gender;
             this.breed = breed;
+            this.gender = gender;
             this.description = description;
             this.photoName = photoName;
         }
@@ -223,8 +224,8 @@ public class DBUtil {
             params.add(new BasicNameValuePair("email", email));
             params.add(new BasicNameValuePair("petName", petName));
             params.add(new BasicNameValuePair("petType", petType));
-            params.add(new BasicNameValuePair("gender", gender));
             params.add(new BasicNameValuePair("breed", breed));
+            params.add(new BasicNameValuePair("gender", gender));
             params.add(new BasicNameValuePair("description", description));
             params.add(new BasicNameValuePair("photoName", photoName ));
 

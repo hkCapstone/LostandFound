@@ -12,8 +12,8 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <!-- Permission to receive text message -->
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <!-- Permission to use camera -->
-    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Permission to use camera
+    <uses-permission android:name="android.permission.CAMERA" /> -->
     <!-- Permission to access map services -->
     <permission
         android:name="com.hk.lostandfound.permission.MAPS_RECEIVE"

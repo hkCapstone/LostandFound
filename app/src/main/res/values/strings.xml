@@ -28,7 +28,7 @@
     <string name="add_post">Add Found/Lost Post</string>
     <string name="about">About</string>
     <string name="address">Address:</string>
-    <string name="name">Name:</string>
+    <string name="name">Your Name:</string>
     <string name="add_photo">Add Photo</string>
     <string name="post_information">Post Information</string>
     <string name="cancel">Cancel</string>
@@ -44,4 +44,6 @@
     <string name="f">F</string>
     <string name="m">M</string>
     <string name="menu">Menu</string>
+    <string name="phone">Phone:</string>
+    <string name="addedphoto">addedPhoto</string>
 </resources>

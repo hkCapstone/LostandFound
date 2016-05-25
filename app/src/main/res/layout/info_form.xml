@@ -9,9 +9,27 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.hk.lostandfound.UserInfo">
 
+    <!-- Dummy item to prevent AutoCompleteTextView from receiving focus -->
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <!-- Dummy item to prevent AutoCompleteTextView from receiving focus -->
+        <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_width="0px"
+            android:layout_height="0px"/>
+
+        <!-- :nextFocusUp and :nextFocusLeft have been set to the id of this component
+        to prevent the dummy from receiving focus again -->
+        <AutoCompleteTextView android:id="@+id/autotext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:nextFocusUp="@id/autotext"
+            android:nextFocusLeft="@id/autotext"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -27,7 +45,7 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/Name_edittext_id"
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
             android:enabled="true"
             android:editable="true"
             android:layout_toEndOf="@id/Name_textView_Id"/>
@@ -50,8 +68,7 @@
             android:editable="true"
             android:enabled="true"
             android:layout_below="@+id/Name_edittext_id"
-            android:layout_toEndOf="@+id/Address_textView_id"
-            />
+            android:layout_toEndOf="@+id/Address_textView_id"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -98,7 +115,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Phone:"
+            android:text="@string/phone"
             android:id="@+id/Phone_textView_id"
             android:layout_below="@+id/Zip_textView_id"
             android:textSize="25sp"
@@ -168,7 +185,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/PetName_edittext_id"
             android:ems="10"
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
             android:layout_centerVertical="true"
             android:inputType="text"
             android:layout_toEndOf="@id/PetName_textView_id"
@@ -189,7 +206,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/breed_edittext_id"
             android:ems="10"
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
             android:layout_centerVertical="true"
             android:inputType="text"
             android:layout_toEndOf="@id/Breed_textView_id"
@@ -209,7 +226,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/Pet_Type_editText_id"
             android:ems="10"
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:inputType="text"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
             android:layout_toEndOf="@id/Pet_type_TextView_ID"
             android:layout_below="@id/breed_edittext_id"/>
 
@@ -301,11 +319,37 @@
         </GridLayout>
 
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ivImage"
-                android:layout_below="@id/buttonLayout"/>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_marginBottom="15dp"
+            android:layout_below="@id/buttonLayout"
+            android:visibility="gone"/>
+
+
+        <TextView
+            android:id="@+id/txtPercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/progressBar"
+            android:textColor="@color/blue"
+            android:textSize="30sp" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivImage"
+            android:layout_below="@id/txtPercentage"
+            android:contentDescription="@string/addedphoto"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
 
     </RelativeLayout>
 
